@@ -42,10 +42,10 @@
 
  <nav>
      <ul>
-         <li><a href="#">공지사항</a></li>
-         <li><a href="#">자유게시판</a></li>
-         <li><a href="#">질문게시판</a></li>
-         <li><a href="#">FAQ</a></li>
-         <li><a href="#">1:1문의</a></li>
+        <li th:each="boardType : ${application.boardTypeList}">
+			<!-- li에 th:each 걸면 li 태그 포함해서 반복 -->
+			<a th:href="@{/board/{boardCode}(boardCode=${boardType.BOARD_CODE})}" th:text="${boardType.BOARD_NAME}">게시판 이름</a>
+			
+		</li>
      </ul>
  </nav>
