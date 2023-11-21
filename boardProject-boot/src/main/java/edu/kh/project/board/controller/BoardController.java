@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.dto.Board;
+import edu.kh.project.board.model.dto.BoardImage;
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.member.model.dto.Member;
 import jakarta.servlet.http.Cookie;
@@ -108,7 +109,20 @@ public class BoardController {
 				path = "board/boardDetail";   //조회결과 있으면 상세조회결과로 foward
 				model.addAttribute("board",board); // SQL 에서 조회한 값들 model 객체로 전달	
 				
-				
+				//게시글의 이미지가 있을 경우 
+				if(!board.getImageList().isEmpty()) {
+					
+					BoardImage thumbnail = null;
+					
+					if(board.getImageList().get(0).getImageOrder() == 0 ) { //썸네일이면
+						thumbnail = board.getImageList().get(0);
+					}
+					
+					model.addAttribute("thumbnail", thumbnail);
+					
+					// 썸네일 있으면 start = 1, 없으면 0
+					model.addAttribute("start", thumbnail != null ? 1 :0 );
+				}
 				
 				// 로그인 상태인 경우 회원번호 얻어와서 좋아요 여부 확인하는 service 호출
 				// 좋아요를 눌렀으면 "likeCheck" 모델에 실어서 보냄
