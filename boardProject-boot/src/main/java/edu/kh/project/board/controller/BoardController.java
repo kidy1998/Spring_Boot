@@ -108,6 +108,7 @@ public class BoardController {
 			if(board != null) {
 				path = "board/boardDetail";   //조회결과 있으면 상세조회결과로 foward
 				model.addAttribute("board",board); // SQL 에서 조회한 값들 model 객체로 전달	
+			
 				
 				//게시글의 이미지가 있을 경우 
 				if(!board.getImageList().isEmpty()) {

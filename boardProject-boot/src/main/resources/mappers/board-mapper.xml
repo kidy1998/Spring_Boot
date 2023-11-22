@@ -227,7 +227,7 @@
   	</select>
   
   	
-  	<!-- 댓글조회 -->
+  	<!-- 댓글조회-->
   	<select id="selectCommentList" resultMap = "comment_rm">
   	SELECT C.* 
   	FROM  
@@ -242,7 +242,7 @@
 	CONNECT BY PRIOR COMMENT_NO = PARENT_NO 
 	ORDER SIBLINGS BY COMMENT_NO  
   	</select>
-  
+   
   
   	<!-- 좋아요 눌렀는지 확인 -->
   	<select id="likeCheck" resultType="_int">

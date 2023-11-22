@@ -123,8 +123,6 @@ public class BoardServiceImpl2 implements BoardService2{
 	public int boardUpdate(Board board, List<MultipartFile> images,
 			String deleteList) throws IllegalStateException, IOException {
 		
-		board.setBoardContent( Util.XSSHandling( board.getBoardContent()) );
-		board.setBoardTitle(Util.XSSHandling( board.getBoardTitle()) );
 		
 		// 게시글만 업데이트하는 DAO 호출
 		int rowCount = mapper.boardUpdate(board);

@@ -151,7 +151,7 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
    					};
    
    
-    fetch("/comment", {
+    fetch("/insert", {
     	method: "POST",
     	headers: {"Content-Type" : "application/json"},
     	body : JSON.stringify(data) // JS 객체 -> JSON 파싱
@@ -417,7 +417,7 @@ function insertChildComment(parentNo, btn){
 				"parentNo" : parentNo };
    
 
-	fetch("/comment", {
+	fetch("/reply", {
     	method: "POST",
     	headers: {"Content-Type" : "application/json"},
     	body : JSON.stringify(data) // JS 객체 -> JSON 파싱
