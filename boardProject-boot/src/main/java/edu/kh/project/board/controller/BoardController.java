@@ -64,6 +64,7 @@ public class BoardController {
 				
 			}else {
 				
+				System.out.println("paramMap : " + paramMap);
 				paramMap.put("boardCode", boardCode);
 				
 				Map<String, Object> map = service.selectBoardList(paramMap, cp);
