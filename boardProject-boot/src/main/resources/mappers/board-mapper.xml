@@ -196,12 +196,7 @@
   	
   	
   	
-  	
-  	
-  	
-  	
-  	
-  	
+
   	<select id="selectBoard" resultMap="board_rm">
   	
   	SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_CODE,

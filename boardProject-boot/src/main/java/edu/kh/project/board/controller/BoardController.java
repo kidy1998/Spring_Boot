@@ -114,7 +114,7 @@ public class BoardController {
 				//게시글의 이미지가 있을 경우 
 				if(!board.getImageList().isEmpty()) {
 					
-					BoardImage thumbnail = null;
+					BoardImage thumbnail = null;	
 					
 					if(board.getImageList().get(0).getImageOrder() == 0 ) { //썸네일이면
 						thumbnail = board.getImageList().get(0);
@@ -163,7 +163,7 @@ public class BoardController {
 					 // 쿠키가 존재할 경우
 					 if(cookies != null) {
 						 
-						 //쿠키 중 "readBoardNo" 라는 쿠키를 차장서 c 에 대입
+						 //쿠키 중 "readBoardNo" 라는 쿠키를 찾아서 c 에 대입
 						 for(Cookie cookie : cookies) {
 							 if(cookie.getName().equals("readBoardNo")) {
 								 c = cookie;
