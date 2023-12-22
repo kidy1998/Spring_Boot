@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공공데이터</title>
+</head>
+<body>
+    <h2>지진, 해일시 대피소</h2>
+	
+	<button id = "btn1">대피소 조회</button>
+	<br><br>
+	<table id = "resultTable" border ="1">
+	    <thead id = "resultHead">
+			<tr>
+				<th>시도</th>
+				<th>군구</th>
+				<th>지역</th>
+				<th>대피소이름</th>
+				<th>상세주소</th>
+			</tr>
+		</thead>
+		<tbody id = "resultBody">
+		</tbody>
+	</table>
+
+
+<script>
+    const btn = document.getElementById("btn1");
+    const resultBody = document.getElementById("resultBody");
+
+    btn.addEventListener("click", () => {
+
+        fetch("busInfo")
+        .then(res => res.json())
+        .then(data => {
+            
+            const jsonData = data.TsunamiShelter[1].row;
+            console.log("data : ", data);
+            console.log("data.TsunamiShelter[1].row : ", data.TsunamiShelter[1].row);
+          
+
+            resultBody.innerHTML = "";
+           	
+            for(let i in jsonData){
+                let item = jsonData[i];
+
+                const row = document.createElement("tr");
+                const routeid = document.createElement("td");
+                routeid.textContent = item.sido_name;
+                row.appendChild(routeid); // 새로운 자식 노드추가
+                const busNodeId = document.createElement("td");
+                busNodeId.textContent = item.sigungu_name;
+                row.appendChild(busNodeId);
+                const nodenm = document.createElement("td");
+                nodenm.textContent = item.remarks;
+                row.appendChild(nodenm);
+                const nodeno = document.createElement("td");
+                nodeno.textContent = item.shel_nm;
+                row.appendChild(nodeno);
+                const nodeord = document.createElement("td");
+                nodeord.textContent = item.address;
+                row.appendChild(nodeord);
+                resultBody.appendChild(row);
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+    })
+
+</script>
+
+
+</body>
+</html>

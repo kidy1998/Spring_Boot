@@ -4,13 +4,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.project.member.model.dto.Member;
+
 @Controller
+@SessionAttributes({"loginMember"})
 public class MainController {
 	
 	@RequestMapping("/")
-	public String mainForward(Model model) {
+	public String mainForward(Model model,
+			@SessionAttribute(value = "loginMember", required = false) Member loginMember
+			) {
 		
 		model.addAttribute("name", "홍길동");
 		
